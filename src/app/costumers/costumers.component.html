@@ -1,0 +1,36 @@
+<header>
+  <h1>Costumers List ;)</h1>
+</header>
+<main class="client-container">
+  <input type="text" name="" id="search" value="" placeholder="search here..." [(ngModel)]="searchText">
+  <h2>CLIENTS</h2><wbr>
+  <ul class="client-list">
+    <li class="card"
+    *ngFor="let client of clients | filter:searchText"
+    [class.open]="client === selectedCard"
+    (click)="onSelect(client)">
+
+      <picture class="avatar">
+        <source srcset="{{client.picture}}" media="(min-width: 600px)">
+        <img src="{{client.picture}}" alt="">
+       </picture>
+
+      <p class="name">{{client.name}}</p>
+      <p class="role">{{client.role}}</p>
+      <p class="location">{{client.location}}</p>
+
+      <div class="details">
+        <ul>
+          <li><b>Birth:</b> {{client.birth | date }}</li>
+          <li><b>Bio:</b> {{client.bio}}</li>
+          <li><b>Email:</b> {{client.email}}</li>
+        </ul>
+      </div>
+
+      <button class="btn-details"><span class="ic-more">+</span> more info</button>
+    </li>
+  </ul>
+</main>
+<footer>
+  Made by Paolo
+</footer>
